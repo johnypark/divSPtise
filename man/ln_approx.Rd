@@ -1,7 +1,7 @@
 \name{ln_approx}
 \alias{ln_approx}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{
+\title{wrapper function of approx
 %%  ~~function to do ... ~~
 }
 \description{
@@ -56,14 +56,14 @@ ln_approx(df, x.name, y.name, xout)
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (df, x.name, y.name, xout) 
+function (df, x.name, y.name, xout)
 {
     if (missing(xout)) {
         output <- approx(x = df[[x.name]], y = df[[y.name]])
         xout = 0
     }
     else {
-        output <- approx(x = df[[x.name]], y = df[[y.name]], 
+        output <- approx(x = df[[x.name]], y = df[[y.name]],
             xout)
     }
     return(output)

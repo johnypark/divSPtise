@@ -1,7 +1,7 @@
 \name{itplate}
 \alias{itplate}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{
+\title{iterpolate time series
 %%  ~~function to do ... ~~
 }
 \description{
@@ -65,16 +65,16 @@ itplate(Dat_Frm, Data_Type, IntrPol_Var, Time_Var = NULL, Prime_Key = NULL, Secn
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (Dat_Frm, Data_Type, IntrPol_Var, Time_Var = NULL, Prime_Key = NULL, 
-    Secnd_Key = NULL, Time_Full = NULL) 
+function (Dat_Frm, Data_Type, IntrPol_Var, Time_Var = NULL, Prime_Key = NULL,
+    Secnd_Key = NULL, Time_Full = NULL)
 {
-    if (is.null(Prime_Key)) 
+    if (is.null(Prime_Key))
         Prime_Key <- "tag"
-    if (is.null(Secnd_Key)) 
+    if (is.null(Secnd_Key))
         Secnd_Key <- "spcode"
-    if (is.null(Time_Var)) 
+    if (is.null(Time_Var))
         Time_Var <- "date"
-    if (is.null(Time_Full)) 
+    if (is.null(Time_Full))
         Time_Full <- Dat_Frm[[Time_Var]] \%>\% as.Date \%>\% unique
     Dat_Frm.index.na <- (Dat_Frm[[IntrPol_Var]] \%>\% is.na)
     Dat_Frm \%<>\% .[!Dat_Frm.index.na, ]
@@ -86,17 +86,17 @@ function (Dat_Frm, Data_Type, IntrPol_Var, Time_Var = NULL, Prime_Key = NULL,
     for (i in 1:length(Dat_Frm.array.KeyMatch)) {
         sbst.Dat_Frm <- Dat_Frm \%>\% filter(tag == Dat_Frm.array.KeyMatch[i])
         sbst.Dat_Frm$Dcount <- sbst.Dat_Frm[[Time_Var]] \%>\% as.numeric
-        index.MssngPnts <- (!(Time_Full) \%in\% sbst.Dat_Frm[[Time_Var]]) \%>\% 
+        index.MssngPnts <- (!(Time_Full) \%in\% sbst.Dat_Frm[[Time_Var]]) \%>\%
             which
         if (length(index.MssngPnts) > 0) {
-            itrpl.leaf <- sbst.Dat_Frm \%>\% ln_approx("Dcount", 
+            itrpl.leaf <- sbst.Dat_Frm \%>\% ln_approx("Dcount",
                 IntrPol_Var, xout <- (Time_Full \%>\% as.numeric)[index.MssngPnts])
-            Dat_Frm.itrpl <- data.frame(as.Date(itrpl.leaf[["x"]], 
+            Dat_Frm.itrpl <- data.frame(as.Date(itrpl.leaf[["x"]],
                 origin = "1970-1-1"), itrpl.leaf[["y"]], QC = "interpolation")
             colnames(Dat_Frm.itrpl)[1:2] <- c(Time_Var, IntrPol_Var)
             Dat_Frm.itrpl[[Prime_Key]] <- Dat_Frm.array.KeyMatch[i]
             Dat_Frm.itrpl[[Secnd_Key]] <- (sbst.Dat_Frm[[Secnd_Key]])[1]
-            index.neg <- which(Dat_Frm.itrpl[[IntrPol_Var]] < 
+            index.neg <- which(Dat_Frm.itrpl[[IntrPol_Var]] <
                 0)
             Dat_Frm.itrpl[index.neg, IntrPol_Var] <- 0
             Dat_Frm.itrpl.LIST[[i]] <- Dat_Frm.itrpl

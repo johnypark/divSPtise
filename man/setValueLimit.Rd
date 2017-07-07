@@ -1,7 +1,7 @@
 \name{setValueLimit}
 \alias{setValueLimit}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{
+\title{setting upper and lower limits to array
 %%  ~~function to do ... ~~
 }
 \description{
@@ -53,7 +53,7 @@ setValueLimit(array, lowerlimit, upperlimit)
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (array, lowerlimit, upperlimit) 
+function (array, lowerlimit, upperlimit)
 {
     array[array > upperlimit] = upperlimit
     array[array < lowerlimit] = lowerlimit

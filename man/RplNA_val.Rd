@@ -1,7 +1,7 @@
 \name{RplNA_val}
 \alias{RplNA_val}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{
+\title{Rplacing NA with rplvalue
 %%  ~~function to do ... ~~
 }
 \description{
@@ -53,7 +53,7 @@ RplNA_val(df, colname, rplvalue)
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (df, colname, rplvalue) 
+function (df, colname, rplvalue)
 {
     idx.col.na <- is.na(df[[colname]]) \%>\% which
     df[idx.col.na, colname] <- rplvalue
