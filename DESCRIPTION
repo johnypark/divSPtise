@@ -1,9 +1,9 @@
 Package: divSPtise
 Type: Package
-Title: DIVerse SPecies TIme SEries analysis with regression option with multiple functional traits r package
+Title: DIVerse SPecies TIme SEries r package
 Version: 0.1.0
 Author: John Park
 Maintainer: Dont complain to <anyone@somewhere.net>
-Description: More about what it does (maybe more than one line)
+Description: Species-rich ecological time series analysis with regression option with multiple functional traits
 License: What license is it under?
 LazyData: TRUE
