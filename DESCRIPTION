@@ -1,0 +1,10 @@
+Package: divSPtise
+Type: Package
+Title: DIVerse SPecies TIme SEries analysis with regression option with multiple functional traits r package
+(divsptise)
+Version: 0.1.0
+Author: John Park
+Maintainer: Dont complain to <anyone@somewhere.net>
+Description: More about what it does (maybe more than one line)
+License: What license is it under?
+LazyData: TRUE
