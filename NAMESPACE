@@ -1,3 +1,6 @@
 exportPattern("^[[:alpha:]]+")
-export(itplate)
+
 import(magrittr)
+import(dplyr)
+export(itplate)
+export(ln_approx)
