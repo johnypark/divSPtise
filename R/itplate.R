@@ -29,7 +29,7 @@ itplate<-function(df,Data_Type,IntrPol_Var,Time_Var=NULL,Prime_Key=NULL,Secnd_Ke
       df.itrpl[[Prime_Key]]<- df.array.KeyMatch[i] ##add new column tag to data frame
       df.itrpl[[Secnd_Key]] <-(sbst.df[[Secnd_Key]])[1]
       index.neg<-which(df.itrpl[[IntrPol_Var]]<0)
-      df.itrpl[index.neg,IntrPol_Var2]<-0
+      df.itrpl[index.neg,IntrPol_Var]<-0
       df.itrpl.LIST[[i]]<-df.itrpl
     }
     else {}
