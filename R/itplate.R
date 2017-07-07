@@ -1,6 +1,6 @@
 #interpolation function __itplate__
 ## function adding itplation of IntrPol_var to data fame, with two keys _Prime_key and Secnd_Key_ from Time_full range, find missing
-## time points and fill data from missing time points
+## time points and fill data from missing time points, uses date time variable
 
 itplate<-function(df,Data_Type,IntrPol_Var,Time_Var=NULL,Prime_Key=NULL,Secnd_Key=NULL,Time_Full=NULL){
   ##depend
@@ -9,8 +9,9 @@ itplate<-function(df,Data_Type,IntrPol_Var,Time_Var=NULL,Prime_Key=NULL,Secnd_Ke
   #default: timepoints is from Time_Full: all the dates from UAV flights
   if(is.null(Prime_Key)) Prime_Key<-"tag"
   if(is.null(Secnd_Key)) Secnd_Key<-"spcode"
-  if(is.null(Time_Var)) Time_Var<-"date"; df[[Time_Var]] %<>% as.Date
+  if(is.null(Time_Var)) Time_Var<-"date"
   if(is.null(Time_Full)) Time_Full<-df[[Time_Var]] %>% as.Date %>% unique
+  df[[Time_Var]] %<>% as.Date
   df[["QC"]] <-Data_Type ##add new column QC to data frame
   df.array.KeyMatch <-df[[Prime_Key]]%>%unique
   df.itrpl.LIST=list()
@@ -27,7 +28,7 @@ itplate<-function(df,Data_Type,IntrPol_Var,Time_Var=NULL,Prime_Key=NULL,Secnd_Ke
 
       df.itrpl[[Prime_Key]]<- df.array.KeyMatch[i] ##add new column tag to data frame
       df.itrpl[[Secnd_Key]] <-(sbst.df[[Secnd_Key]])[1]
-      index.neg<-which(df.itrpl[[IntrPol_Var2]]<0)
+      index.neg<-which(df.itrpl[[IntrPol_Var]]<0)
       df.itrpl[index.neg,IntrPol_Var2]<-0
       df.itrpl.LIST[[i]]<-df.itrpl
     }
