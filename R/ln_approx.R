@@ -1,6 +1,6 @@
-#ln_approx
-#Warpper function of approx
-
+#' ln_approx
+#' Warpper function of approx
+#' @importFrom stats approx
 ln_approx <-function(df,x.name,y.name,xout){
 
   if(missing(xout)){

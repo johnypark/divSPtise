@@ -1,3 +1,6 @@
+#' @importFrom stats loess
+#'
+
 Yval.sps<-function(Data_Frame,sp_list,loess.span)
 {
   ##Depends on sLeaves sBranch

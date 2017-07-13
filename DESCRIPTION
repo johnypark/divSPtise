@@ -8,3 +8,6 @@ Description: Species-rich ecological time series analysis with regression option
 License: What license is it under?
 LazyData: TRUE
 RoxygenNote: 6.0.1
+Imports: magrittr,
+    dplyr,
+    stats
