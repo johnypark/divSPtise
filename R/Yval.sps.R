@@ -14,7 +14,7 @@ Yval.sps<-function(Data_Frame,sp_list)
 
 
   y.date=as.Date(date.period,origin = "1970-01-01")
-  df.LIST[[j]]<- data.frame("spcode"=sp_list,"date"=y.date,"Mean_Leaves"=setValueLimit(pred.Leaf$fit,0,100),"Sd_Leaves"=pred.Leaf$se.fit)
+  df.LIST[[j]]<- data.frame("spcode"=sp_list[j],"date"=y.date,"Mean_Leaves"=setValueLimit(pred.leaf$fit,0,100),"Sd_Leaves"=pred.leaf$se.fit)
 
 }
   ####
