@@ -1,7 +1,7 @@
 
 #' loess function wrapper for time series in date
 #' @importFrom stats loess
-#' @import dyplyr
+#' @import dplyr
 #' @import magrittr
 
 
