@@ -1,7 +1,7 @@
 #' function area under the curve
 #' @import dplyr
 #' @import magrittr
-#'
+#' 071817
 #'
 #'
 #'
@@ -39,22 +39,38 @@ Calc_AUC<-function(cts,Key.Name,Key.List,Foc.Var,Out.Var,date.min=NULL,date.max=
     integral_x_max<-date.max%>%as.Date%>%as.numeric-MinD
   }
 
+  ##
+  ##
+  ##
+  ##
   AUC_Rslt <- data.frame(Key.List, NA)
-  colnames(AUC_Rslt)=c(Key.Name,"AUC_Rslt")
+  colnames(AUC_Rslt)=c(Key.Name,Out.Var)
+
+
+
+
+
+
+
+
 
   for(i in 1:length(Key.List)){
 
-    fit <- (cts %>% group_by_(Key.Name) %>%
-              filter_("%s==%s"%>%sprintf(Key.Name,AUC_Rslt[[Key.Name]][i])) %>% arrange(date) %>%
-              select_("date",Foc.Var) %>% mutate(date=as.numeric(date)-min(as.numeric(date))) %>%
-              loess(sBranch~date, data=.))
+    date.vec=sprintf("as.numeric(%s)-min(as.numeric(%s))","date","date")
+    setNames(date.vec,"date")
+    fit <- cts %>% group_by_(Key.Name) %>%
+      filter_("%s==%s"%>%sprintf(Key.Name,AUC_Rslt[[Key.Name]][i])) %>%
+      arrange(date) %>%
+      select_("date",Foc.Var) %>%
+      mutate_(.dots = setNames(date.vec,"date")) %$%
+      loess(.[[Foc.Var]]~.[["date"]])
+
     try(int.fun <- function(x) predict(fit, newdata=x))
-    try(AUC_Rslt$AUC_Rslt[i] <- integrate(int.fun, integral_x_min, integral_x_max)$value)
+    try(AUC_Rslt[[Out.Var]][i] <- integrate(int.fun, integral_x_min, integral_x_max)$value)
     try(rm(fit))
   }
 
 
-  return()
+  return(AUC_Rslt)
 
 }
-
