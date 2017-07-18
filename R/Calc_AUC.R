@@ -32,9 +32,9 @@ Calc_AUC<-function(Dat_Fr,Key.Name,Key.List,Foc.Var,Out.Var,date.min=NULL,date.m
     integral_x_min<-date.min%>%as.Date%>%as.numeric-MinD
   }
   if (is.null(date.max)) {
-    integral_x_max=(MaxD-MinD);
+    integral_x_max=(MaxD-MinD-1);
   } else if ((date.max%>%as.Date%>%as.numeric)>MaxD) {
-    integral_x_max=(MaxD-MinD);
+    integral_x_max=(MaxD-MinD-1);
   } else {
     integral_x_max<-date.max%>%as.Date%>%as.numeric-MinD
   }
