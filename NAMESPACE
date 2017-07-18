@@ -3,7 +3,6 @@
 export(Calc_AUC)
 export(itplate)
 import(dplyr)
-import(dyplyr)
 import(magrittr)
 importFrom(divsptise,setValueLimit)
 importFrom(stats,approx)
