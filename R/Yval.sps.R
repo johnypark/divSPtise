@@ -3,6 +3,8 @@
 #' @importFrom stats loess
 #' @import dplyr
 #' @import magrittr
+#' @export
+
 
 
 Yval.sps<-function(Dat_Fr,sp_list,Est.Var,loess.span)
