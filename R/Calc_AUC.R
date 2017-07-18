@@ -15,8 +15,9 @@ Key.Name="tag"
 Data_Frame=cts
 
 
-Calc_AUC<-function(cts,Key.List,date.min=NULL,date.max=NULL){
+Calc_AUC<-function(cts,Key.Name,Key.List,Foc.Var,Out.Var,date.min=NULL,date.max=NULL){
   ##add Key.Name
+  ##add Foc.Var
   ##add Out.Var =AUC_Rslt
 
 
@@ -42,9 +43,10 @@ Calc_AUC<-function(cts,Key.List,date.min=NULL,date.max=NULL){
   colnames(AUC_Rslt)=c(Key.Name,"AUC_Rslt")
 
   for(i in 1:length(Key.List)){
-    fit <- (cts %>% group_by(tag) %>%
-              filter(tag==AUC_Rslt$tag[i] ) %>% arrange(date) %>%
-              select(date,sBranch) %>% mutate(date=as.numeric(date)-min(as.numeric(date))) %>%
+
+    fit <- (cts %>% group_by_(Key.Name) %>%
+              filter_("%s==%s"%>%sprintf(Key.Name,AUC_Rslt[[Key.Name]][i])) %>% arrange(date) %>%
+              select_("date",Foc.Var) %>% mutate(date=as.numeric(date)-min(as.numeric(date))) %>%
               loess(sBranch~date, data=.))
     try(int.fun <- function(x) predict(fit, newdata=x))
     try(AUC_Rslt$AUC_Rslt[i] <- integrate(int.fun, integral_x_min, integral_x_max)$value)
