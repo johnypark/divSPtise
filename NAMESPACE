@@ -2,8 +2,8 @@
 
 export(Calc_AUC)
 export(itplate)
+export(setValueLimit)
 import(dplyr)
 import(magrittr)
-importFrom(divsptise,setValueLimit)
 importFrom(stats,approx)
 importFrom(stats,loess)

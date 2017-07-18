@@ -1,7 +1,7 @@
 #' function area under the curve
 #' @import dplyr
 #' @import magrittr
-#' @importFrom divsptise setValueLimit
+#'
 #' @export
 #'
 #'
