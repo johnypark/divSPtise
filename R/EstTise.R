@@ -1,5 +1,6 @@
-##wrapper around Yval.sps
-##use Yval.sps as internal
+#' wrapper around Yval.sps
+#' use Yval.sps as internal
+#' @import magrittr
 EstTise<- function (Data_Frame,sp_list, Var_Interest=NULL, method=NULL){
   ##if Var_Interest is not one of colname in Data_Frame than error message
   #if (!Var_Interest%in%colnames(Data_Frame)){

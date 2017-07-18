@@ -1,5 +1,9 @@
+
+#' loess function wrapper for time series in date
 #' @importFrom stats loess
-#'
+#' @import dyplyr
+#' @import magrittr
+
 
 Yval.sps<-function(Dat_Fr,sp_list,Est.Var,loess.span)
 {

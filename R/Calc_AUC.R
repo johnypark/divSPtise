@@ -2,8 +2,7 @@
 #' @import dplyr
 #' @import magrittr
 #' @importFrom divsptise setValueLimit
-#' 071817
-#'
+#' @export
 #'
 #'
 #'
@@ -11,18 +10,15 @@
 #'
 
 
-Key.Name="tag"
-Data_Frame=Dat_Fr
 
-
-Calc_AUC<-function(Dat_Fr,Key.Name,Key.List,Foc.Var,Out.Var,date.min=NULL,date.max=NULL){
+Calc_AUC<-function(Dat_Frm,Key.Name,Key.List,Foc.Var,Out.Var,date.min=NULL,date.max=NULL){
   ##add Key.Name
   ##add Foc.Var
   ##add Out.Var =AUC_Rslt
 
 
-  MinD<-Dat_Fr[["date"]]%>%as.numeric%>%min
-  MaxD<-Dat_Fr[["date"]]%>%as.numeric%>%max
+  MinD<-Dat_Frm[["date"]]%>%as.numeric%>%min
+  MaxD<-Dat_Frm[["date"]]%>%as.numeric%>%max
 
   if(is.null(date.min)) {
     integral_x_min=0;
@@ -47,7 +43,7 @@ Calc_AUC<-function(Dat_Fr,Key.Name,Key.List,Foc.Var,Out.Var,date.min=NULL,date.m
 
     date.vec=sprintf("as.numeric(%s)-min(as.numeric(%s))","date","date")
     setNames(date.vec,"date")
-    fit <- Dat_Fr %>% group_by_(Key.Name) %>%
+    fit <- Dat_Frm %>% group_by_(Key.Name) %>%
       filter_("%s==%s"%>%sprintf(Key.Name,AUC_Rslt[[Key.Name]][i])) %>%
       arrange(date) %>%
       select_("date",Foc.Var) %>%
