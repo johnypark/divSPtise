@@ -7,6 +7,7 @@
 #' Out.Var: Variable
 #' @import dplyr
 #' @import magrittr
+#' @export
 
 Est.Tise.loess<-function(Dat_Frm,Key.Name,Key.List,Foc.Var,date.min=NULL,date.max=NULL,loess.span=NULL){
   ##add Key.Name
