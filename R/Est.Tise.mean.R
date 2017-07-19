@@ -40,11 +40,10 @@ Foc.sd.name<-"sd_%s"%>%sprintf(Foc.var)
       mutate(month = month(date), year= year(date)) %>%
       group_by(year, month, spcode) %>%
       summarise_(
-        .dots= list(
-        setNames(Foc.mean.str,Foc.mean.name),
-        setNames(Foc.sd.str,Foc.sd.name),
-        setNames("mean(date)","date")
-                )
+                .dots= c(setNames(Foc.mean.str,Foc.mean.name),
+                         setNames(Foc.sd.str,Foc.sd.name),
+                        setNames("mean(date)","date")
+                        )
                 )
 
     Est_Rslt[[i]]<-df_bymonth
