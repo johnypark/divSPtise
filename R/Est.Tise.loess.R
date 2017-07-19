@@ -10,7 +10,7 @@
 #'
 #'
 #'
-Est.Tise.loess<-function(Dat_Frm,Key.Name,Key.List,Foc.Var,date.min=NULL,date.max=NULL){
+Est.Tise.loess<-function(Dat_Frm,Key.Name,Key.List,Foc.Var,date.min=NULL,date.max=NULL,loess.span){
   ##add Key.Name
   ##add Foc.Var
   ##add Out.Var =AUC_Rslt
@@ -38,7 +38,7 @@ Est.Tise.loess<-function(Dat_Frm,Key.Name,Key.List,Foc.Var,date.min=NULL,date.ma
       filter_("%s=='%s'"%>%sprintf(Key.Name,Key.List[i])) %>%
       mutate_(.dots = setNames(date.vec,"date")) %>%
       group_by_("date") %$%
-      loess(.[[Foc.Var]]~date) %>%
+      loess(.[[Foc.Var]]~date,span=loess.span) %>%
       predict(.,data.frame(date=c(start_date:end_date)),se = TRUE)
     #return(y)
     AUC_Rslt[[i]]=data.frame(
