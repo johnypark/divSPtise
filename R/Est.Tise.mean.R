@@ -36,7 +36,7 @@ Est.Tise.mean<-function(Dat_Frm,Key.Name,Key.List,Foc.Var,date.min=NULL,date.max
     df_bymonth<-Dat_Frm %>% group_by_(Key.Name) %>%
       filter_("%s=='%s'"%>%sprintf(Key.Name,Key.List[i]))%>%
       mutate(month = month(date), year= year(date)) %>%
-      group_by(year, month,week, spcode) %>%
+      group_by(year, month, spcode) %>%
       summarise_(
                 "mean_%s=mean(%s)"%>%sprintf(Foc.Var,Foc.Var),
                 "sd_%s=sd(%s)"%>%sprintf(Foc.Var,Foc.Var),
