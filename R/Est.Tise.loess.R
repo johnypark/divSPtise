@@ -10,7 +10,8 @@
 #'
 #'
 #'
-Est.Tise.loess<-function(Dat_Frm,Key.Name,Key.List,Foc.Var,date.min=NULL,date.max=NULL,loess.span){
+
+Est.Tise.loess<-function(Dat_Frm,Key.Name,Key.List,Foc.Var,date.min=NULL,date.max=NULL,loess.span=NULL){
   ##add Key.Name
   ##add Foc.Var
   ##add Out.Var =AUC_Rslt
@@ -18,15 +19,21 @@ Est.Tise.loess<-function(Dat_Frm,Key.Name,Key.List,Foc.Var,date.min=NULL,date.ma
   MinD<-Dat_Frm[["date"]]%>%as.numeric%>%min
   MaxD<-Dat_Frm[["date"]]%>%as.numeric%>%max
   if(is.null(date.min)) {
-    integral_x_min=MinD;
+    start_date=MinD;
+  } else {
+    start_date<-date.min%>%as.Date%>%as.numeric%>%setValueLimit(MinD,MaxD)
   }
   if(is.null(date.max)) {
-    integral_x_max=MaxD;
+    end_date=MaxD;
+  } else{
+    end_date<-date.max%>%as.Date%>%as.numeric%>%setValueLimit(MinD,MaxD)
+  }
+
+  if(is.null(loess.span)) {
+    loess.span=0.5;
   }
 
 
-  start_date<-date.min%>%as.Date%>%as.numeric%>%setValueLimit(MinD,MaxD)
-  end_date<-date.max%>%as.Date%>%as.numeric%>%setValueLimit(MinD,MaxD)
 
   AUC_Rslt<-list() ##call list
 
