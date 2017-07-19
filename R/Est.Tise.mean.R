@@ -30,19 +30,22 @@ Est.Tise.mean<-function(Dat_Frm,Key.Name,Key.List,Foc.Var,date.min=NULL,date.max
   Est_Rslt<-list() ##call list
 
   for(i in 1:length(Key.List)){
-
-    date.vec=sprintf("as.numeric(%s)","date")
+Foc.mean.str<-"mean(%s)"%>%sprintf(Foc.Var)
+Foc.mean.name<-"mean_%s"%>%sprintf(Foc.Var)
+Foc.sd.str<-"sd(%s)"%>%sprintf(Foc.Var)
+Foc.sd.name<-"sd_%s"%>%sprintf(Foc.var)
 
     df_bymonth<-Dat_Frm %>% group_by_(Key.Name) %>%
       filter_("%s=='%s'"%>%sprintf(Key.Name,Key.List[i]))%>%
       mutate(month = month(date), year= year(date)) %>%
       group_by(year, month, spcode) %>%
       summarise_(
-                "mean_%s=mean(%s)"%>%sprintf(Foc.Var,Foc.Var),
-                "sd_%s=sd(%s)"%>%sprintf(Foc.Var,Foc.Var),
-                "date=mean(date)"
+        .dots= list(
+        setNames(Foc.mean.str,Foc.mean.name),
+        setNames(Foc.sd.str,Foc.sd.name),
+        setNames("mean(date)","date")
                 )
-
+                )
 
     Est_Rslt[[i]]<-df_bymonth
 
