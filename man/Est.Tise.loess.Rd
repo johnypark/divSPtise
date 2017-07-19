@@ -5,7 +5,7 @@
 \title{function estimated time series using loess method 071917}
 \usage{
 Est.Tise.loess(Dat_Frm, Key.Name, Key.List, Foc.Var, date.min = NULL,
-  date.max = NULL)
+  date.max = NULL, loess.span = NULL)
 }
 \description{
 function estimated time series using loess method 071917
