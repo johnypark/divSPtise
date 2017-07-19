@@ -37,7 +37,7 @@ EstTise<- function (Data_Frame,sp_list, Var_Interest=NULL, method=NULL){
   }
 
   else if (method=="loess"){
-    Yval.sps(Data_Frame,sp_list) %>% return
+    Est.Tise.loess(Data_Frame,Key.Name = "spcode",Key.List = sp_list,Foc.Var = "sLeaves") %>% return
 
   }
 
