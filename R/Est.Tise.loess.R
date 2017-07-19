@@ -1,15 +1,12 @@
 #' function estimated time series using loess method 071917
-#' @import dplyr
-#' @import magrittr
-#' @importFrom divsptise setValueLimit
+
 #' Dat_Frm: data frame of interest
 #' Key.Name: Key
 #' Key.List: List of Key variables to pass
 #' Foc.Var: Variable of interest to get Area Under the Curve
 #' Out.Var: Variable
-#'
-#'
-#'
+#' @import dplyr
+#' @import magrittr
 
 Est.Tise.loess<-function(Dat_Frm,Key.Name,Key.List,Foc.Var,date.min=NULL,date.max=NULL,loess.span=NULL){
   ##add Key.Name
