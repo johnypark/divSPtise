@@ -31,7 +31,7 @@ Est.Tise.mean<-function(Dat_Frm,Key.Name,Key.List,Foc.Var,date.min=NULL,date.max
 
   for(i in 1:length(Key.List)){
 Foc.mean.str<-"mean(%s)"%>%sprintf(Foc.Var)
-Foc.mean.name<-"%s"%>%sprintf(Foc.Var)
+Foc.mean.name<-"m_%s"%>%sprintf(Foc.Var)
 Foc.sd.str<-"sd(%s)"%>%sprintf(Foc.Var)
 Foc.sd.name<-"sd_%s"%>%sprintf(Foc.Var)
 
