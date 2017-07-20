@@ -33,7 +33,7 @@ Est.Tise.mean<-function(Dat_Frm,Key.Name,Key.List,Foc.Var,date.min=NULL,date.max
 Foc.mean.str<-"mean(%s)"%>%sprintf(Foc.Var)
 Foc.mean.name<-"%s"%>%sprintf(Foc.Var)
 Foc.sd.str<-"sd(%s)"%>%sprintf(Foc.Var)
-Foc.sd.name<-"sd_%s"%>%sprintf(Foc.var)
+Foc.sd.name<-"sd_%s"%>%sprintf(Foc.Var)
 
     df_bymonth<-Dat_Frm %>% group_by_(Key.Name) %>%
       filter_("%s=='%s'"%>%sprintf(Key.Name,Key.List[i]))%>%
