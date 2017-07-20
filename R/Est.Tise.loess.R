@@ -9,7 +9,7 @@
 #' @import magrittr
 #' @export
 
-Est.Tise.loess<-function(Dat_Frm,Key.Name,Key.List,Foc.Var,date.min=NULL,date.max=NULL,loess.span=NULL){
+Est.Tise.loess<-function(Dat_Frm,Key.Name,Key.List,Foc.Var,date.min=NULL,date.max=NULL,...){
   ##time variable must be of name "date". Otherwise, change it to variable name: "date"
   MinD<-Dat_Frm[["date"]]%>%as.numeric%>%min
   MaxD<-Dat_Frm[["date"]]%>%as.numeric%>%max
@@ -41,7 +41,7 @@ Est.Tise.loess<-function(Dat_Frm,Key.Name,Key.List,Foc.Var,date.min=NULL,date.ma
       filter_("%s=='%s'"%>%sprintf(Key.Name,Key.List[i])) %>%
       mutate_(.dots = setNames(date.vec,"date")) %>%
       group_by_("date") %$%
-      loess(.[[Foc.Var]]~date,span=loess.span) %>%
+      loess(.[[Foc.Var]]~date,...) %>%
       predict(.,data.frame(date=c(start_date:end_date)),se = TRUE)
     #return(y)
     Est_Rslt[[i]]=data.frame(
