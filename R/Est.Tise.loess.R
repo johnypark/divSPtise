@@ -23,10 +23,6 @@ Est.Tise.loess<-function(Dat_Frm,Key.Name,Key.List,Foc.Var,date.min=NULL,date.ma
   } else{
     end_date<-date.max%>%as.Date%>%as.numeric%>%setValueLimit(MinD,MaxD)
   }
-
-  if(is.null(loess.span)) {
-    loess.span=0.5;
-  }
   #subset by given date first to create Dat_Frm subset--next goal
 
 

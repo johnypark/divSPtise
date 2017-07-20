@@ -10,7 +10,7 @@ Foc.Var: Variable of interest to get Area Under the Curve
 Out.Var: Variable}
 \usage{
 Est.Tise.loess(Dat_Frm, Key.Name, Key.List, Foc.Var, date.min = NULL,
-  date.max = NULL, loess.span = NULL)
+  date.max = NULL, ...)
 }
 \description{
 function estimated time series using loess method 071917
