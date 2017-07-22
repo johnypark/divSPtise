@@ -3,6 +3,7 @@
 export(Est.Tise.loess)
 export(Est.Tise.mean)
 export(itplate)
+export(regress.plot.gen)
 export(setValueLimit)
 import(dplyr)
 import(lubridate)
