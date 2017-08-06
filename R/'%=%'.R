@@ -1,10 +1,12 @@
 #Matlab like operator :adapted https://stackoverflow.com/questions/7519790/assign-multiple-new-variables-on-lhs-in-a-single-line-in-r
 #does assign multiple values to mulitple objects
-#' @export
 
+#cannot export find a way to export this
+#'
 '%=%' = function(l, r, ...) UseMethod('%=%')
 
-# Binary Operator
+#' Binary Operator
+#'
 '%=%.lbunch' = function(l, r, ...) {
   Envir = as.environment(-1)
 
@@ -21,7 +23,7 @@
   }
 }
 
-# Used if LHS is larger than RHS
+#' Used if LHS is larger than RHS
 extendToMatch <- function(source, destin) {
   s <- length(source)
   d <- length(destin)
@@ -37,7 +39,8 @@ extendToMatch <- function(source, destin) {
   return (source)
 }
 
-# Grouping the left hand side
+#' Grouping the left hand side
+#'
 g = function(...) {
   List = as.list(substitute(list(...)))[-1L]
   class(List) = 'lbunch'
