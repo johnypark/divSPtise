@@ -1,5 +1,7 @@
+#Matlab like operator :adapted https://stackoverflow.com/questions/7519790/assign-multiple-new-variables-on-lhs-in-a-single-line-in-r
+#does assign multiple values to mulitple objects
 #' @export
-# Generic form
+
 '%=%' = function(l, r, ...) UseMethod('%=%')
 
 # Binary Operator
