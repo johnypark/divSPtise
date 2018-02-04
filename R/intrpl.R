@@ -20,7 +20,7 @@ intrpl<-function(Dat_Frm,Data_Type,IntrPol_Var,Time_Var=NULL,Prime_Key=NULL,Secn
   Dat_Frm %<>% .[!Dat_Frm.index.na,] # Remove row with NA values
   Dat_Frm[[Time_Var]] %<>% as.Date
   Dat_Frm[["QC"]] <-Data_Type ##add new column QC to data frame
-  Dat_Frm.array.KeyMatch <-Dat_Frm[[Prime_Key]]%>%unique
+  Dat_Frm.array.KeyMatch <-Dat_Frm[[Prime_Key]]%>%unique  ## get tag list
   Dat_Frm %<>% filter(!is.na(Prime_Key))
 
 
@@ -46,5 +46,11 @@ intrpl<-function(Dat_Frm,Data_Type,IntrPol_Var,Time_Var=NULL,Prime_Key=NULL,Secn
 
   }
   sbst.Dat_Frm<-do.call("rbind",Dat_Frm.itrpl.LIST)
-  return(sbst.Dat_Frm)
+
+  return(
+    sbst.Dat_Frm%>%rbind(
+                  Dat_Frm%>%select_(Time_Var,IntrPol_Var,Prime_Key,Secnd_Key)%>%mutate_(QC=Data_Type)
+                  )
+
+  )
 }
