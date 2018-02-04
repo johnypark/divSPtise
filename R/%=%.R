@@ -1,6 +1,6 @@
 #Matlab like operator :adapted https://stackoverflow.com/questions/7519790/assign-multiple-new-variables-on-lhs-in-a-single-line-in-r
 #does assign multiple values to mulitple objects
-#' @export
+#don't export : causes error Feb 3 2018
 
 '%=%' = function(l, r, ...) UseMethod('%=%')
 
