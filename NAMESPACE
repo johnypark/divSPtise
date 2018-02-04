@@ -2,7 +2,7 @@
 
 export(Est.Tise.loess)
 export(Est.Tise.mean)
-export(itplate)
+export(intrpl)
 export(ln_approx)
 export(regress.plot.gen)
 export(setValueLimit)

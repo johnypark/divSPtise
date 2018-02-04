@@ -1,10 +1,10 @@
-#' interpolation function __itplate__
+#' interpolation function __intrpl__
 #' function adding itplation of IntrPol_var to data fame, with two keys _Prime_key and Secnd_Key_ from Time_full range, find missing
 #' time points and fill data from missing time points, uses date time variable
 #' @import magrittr
 #' @import dplyr
 #' @export
-itplate<-function(Dat_Frm,Data_Type,IntrPol_Var,Time_Var=NULL,Prime_Key=NULL,Secnd_Key=NULL,Time_Full=NULL){
+intrpl<-function(Dat_Frm,Data_Type,IntrPol_Var,Time_Var=NULL,Prime_Key=NULL,Secnd_Key=NULL,Time_Full=NULL){
   ##depend
   ##on package magrittr
   ##on function : ln_approx
