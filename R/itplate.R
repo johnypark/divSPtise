@@ -13,6 +13,9 @@ itplate<-function(Dat_Frm,Data_Type,IntrPol_Var,Time_Var=NULL,Prime_Key=NULL,Sec
   if(is.null(Secnd_Key)) Secnd_Key<-"spcode"
   if(is.null(Time_Var)) Time_Var<-"date"
   if(is.null(Time_Full)) Time_Full<-Dat_Frm[[Time_Var]] %>% as.Date %>% unique
+
+
+
   Dat_Frm.index.na<-(Dat_Frm[[IntrPol_Var]]%>%is.na) # Get index for rows with NA values for variable of interest
   Dat_Frm %<>% .[!Dat_Frm.index.na,] # Remove row with NA values
   Dat_Frm[[Time_Var]] %<>% as.Date
