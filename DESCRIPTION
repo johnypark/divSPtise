@@ -1,7 +1,7 @@
 Package: divSPtise
 Type: Package
 Title: DIVerse SPecies TIme SEries r package
-Version: 0.1.0
+Version: 0.1.1
 Author: John Park
 Maintainer: Dont complain to <anyone@somewhere.net>
 Description: Species-rich ecological time series analysis with regression option with multiple functional traits
