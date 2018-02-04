@@ -49,7 +49,7 @@ intrpl<-function(Dat_Frm,Data_Type,IntrPol_Var,Time_Var=NULL,Prime_Key=NULL,Secn
 
   return(
     sbst.Dat_Frm%>%rbind(
-                  Dat_Frm%>%select_(Time_Var,IntrPol_Var,Prime_Key,Secnd_Key)%>%mutate_(QC=Data_Type)
+                  Dat_Frm%>%select_(Time_Var,IntrPol_Var,Prime_Key,Secnd_Key)%>%mutate(QC=Data_Type)
                   )
 
   )
