@@ -11,8 +11,8 @@
 
 Est.Tise.loess<-function(Dat_Frm,Key.Name,Key.List,Foc.Var,date.min=NULL,date.max=NULL,...){
   ##time variable must be of name "date". Otherwise, change it to variable name: "date"
-  MinD<-Dat_Frm[["date"]]%>%as.numeric%>%min
-  MaxD<-Dat_Frm[["date"]]%>%as.numeric%>%max
+  MinD<-Dat_Frm[["date"]]%>%as.numeric%>%min(.,na.rm=T) ##NAs removed
+  MaxD<-Dat_Frm[["date"]]%>%as.numeric%>%max(.,na.rm=T)
   if(is.null(date.min)) {
     start_date=MinD;
   } else {
