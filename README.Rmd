@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 
 # divSPtise
 
-The goal of divSPtise is to ...
+The goal of divSPtise is to recover and analyze time series datasets with up to two keys.  
 
 ## Installation
 
