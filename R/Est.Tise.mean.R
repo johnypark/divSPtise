@@ -35,10 +35,9 @@ Foc.mean.name<-"m_%s"%>%sprintf(Foc.Var)
 Foc.sd.str<-"sd(%s)"%>%sprintf(Foc.Var)
 Foc.sd.name<-"sd_%s"%>%sprintf(Foc.Var)
 
-    df_bymonth<-Dat_Frm %>% group_by_(Key.Name) %>%
+    df<-Dat_Frm %>% group_by_(Key.Name) %>%
       filter_("%s=='%s'"%>%sprintf(Key.Name,Key.List[i]))%>%
-      mutate(month = month(date), year= year(date)) %>%
-      group_by(year, month, spcode) %>%
+      group_by_(date,Key.Name) %>%
       summarise_(
                 .dots= c(setNames(Foc.mean.str,Foc.mean.name),
                          setNames(Foc.sd.str,Foc.sd.name),
@@ -46,7 +45,7 @@ Foc.sd.name<-"sd_%s"%>%sprintf(Foc.Var)
                         )
                 )
 
-    Est_Rslt[[i]]<-df_bymonth
+    Est_Rslt[[i]]<-df
 
     #try(int.fun <- function(x) predict(fit, newdata=x)%>%setValueLimit(0,100)) #function setValueLimit: set upper and lower bound for prediction
     #try(Est_Rslt[[Out.Var]][i] <- integrate(int.fun, start_date, end_date)$value)
